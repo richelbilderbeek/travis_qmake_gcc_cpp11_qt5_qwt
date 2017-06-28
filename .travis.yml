@@ -16,4 +16,4 @@ before_script:
 script: 
   - qmake -qt=qt5
   - make
-  - ./travis_qmake_gcc_cpp11_qt5
+  - ./travis_qmake_gcc_cpp11_qt5_qwt
