@@ -1,19 +1,15 @@
-# Qt5
-QT += core gui widgets
-
-# Cannot use -Weffc++ with Qt4
-QMAKE_CXXFLAGS += -Wall -Wextra -Werror
-
 SOURCES += main.cpp
-SOURCES += my_dialog.cpp
-FORMS   += my_dialog.ui
-HEADERS += my_dialog.h
-RESOURCES += travis_qmake_gcc_cpp11_qt5_qwt.qrc
+
+# Compile with high warning levels, a warning is an error
+QMAKE_CXXFLAGS += -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic -Weffc++ -Werror
 
 # C++11
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++11
 
-# Prevent Qt for failing with this error:
-# qrc_travis_qmake_gcc_cpp11_qt4.cpp:400:44: error: ‘qInitResources_travis_qmake_gcc_cpp11_qt4__init_variable__’ defined but not used
-QMAKE_CXXFLAGS += -Wno-unused-variable
+# Qt
+QT += core widgets
+
+# Qwt
+INCLUDEPATH += /usr/include/qwt
+LIBS += -lqwt-qt5
